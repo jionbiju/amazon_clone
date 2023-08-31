@@ -92,6 +92,9 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             ),
             ListTile(
+              tileColor: _auth==Auth.signin?
+             GlobalVariables.backgroundColor:
+             GlobalVariables.greyBackgroundCOlor,
               title:const Text('Sign-In',style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),),
@@ -104,6 +107,30 @@ class _AuthScreenState extends State<AuthScreen> {
                   _auth=val!; 
                 });
               },),
+            ),
+            if(_auth==Auth.signin)
+            Container(
+              color: GlobalVariables.backgroundColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                 key:_signUpFornKey ,
+                 child: Column(
+                  children: [
+                    CostomTextField(
+                      hintText: 'Email',
+                      controller: _emailcontroller),
+                       const SizedBox(height: 10,),
+                      CostomTextField(
+                      hintText: 'Password',
+                      controller: _passwordcontroller),
+                      const SizedBox(height: 10,),
+                      CostomButton(text: 'Sign In', onTap: (){
+                        
+                      })
+                  ],
+                 ),),
+              ),
             ),
           ],
         ),
